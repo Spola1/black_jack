@@ -18,8 +18,8 @@ bj/game.rb:16:in `give_card': undefined method `cards' for [#<Hand:0x000055b5f1d
 
   def give_card(player, deck)
     card = deck.cards.pop
-    player.hand.cards << card
-    player.hand.count_points
+    player.hand[0].cards << card
+    player.hand[0].count_points
   end
 
   def give_bank(player1, player2)

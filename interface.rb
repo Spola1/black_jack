@@ -49,11 +49,11 @@ class Interface
   end
 
   def show_computer_cards(player)
-    puts "Карты игрока #{player.name}: ***"
+    puts "Карты игрока #{player.name}:***."
   end
 
   def winner(player)
-    puts "Победил #{player.name}!"
+    puts "Победил #{player.name}! #{show_cards(player.hand[0])}"
   end
 
   def draw
