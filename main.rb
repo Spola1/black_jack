@@ -26,9 +26,9 @@ class Main
       @interface.player_name
       name = @interface.receive_answer
       @player1 = Player.new(name)
-      player1.hand << Hand.new
+      player1.hand
       @player2 = Player.new('Компьютер')
-      player2.hand << Hand.new
+      player2.hand
       @deck
       @game = Game.new
       game_way
@@ -113,7 +113,7 @@ class Main
   end
 
   def player2_turn
-    if @more_cards_player2 && player2.hand[0].points < 17
+    if @more_cards_player2 && player2.hand.points < 17
       self.more_cards_player2 = false
       one_more_card(player2)
     else
@@ -131,13 +131,13 @@ class Main
   end
 
   def cards_on_hands
-    open_cards = player1.hand[0].cards.size + player2.hand[0].cards.size
+    open_cards = player1.hand.cards.size + player2.hand.cards.size
     open_all_cards if open_cards == 6
   end
 
   def winner
-    points_p1 = player1.hand[0].points
-    points_p2 = player2.hand[0].points
+    points_p1 = player1.hand.points
+    points_p2 = player2.hand.points
     if (points_p1 > points_p2 || points_p2 > 21) && points_p1 <= 21
       @interface.winner(player1)
     elsif (points_p2 > points_p1 || points_p1 > 21) && points_p2 <= 21
@@ -145,7 +145,7 @@ class Main
     else
       @interface.draw
     end
-    game.give_bank(player1, player2)
+    game.winner(player1, player2)
     @interface.show_balance(player1, player2)
     @interface.show_separator
   end
@@ -156,8 +156,8 @@ class Main
     self.more_cards_player1 = true
     self.more_cards_player2 = true
     self.open_cards = true
-    player1.hand[0].zeroing_cards
-    player2.hand[0].zeroing_cards
+    player1.hand.zeroing_cards
+    player2.hand.zeroing_cards
   end
 
   def zero_balance?
