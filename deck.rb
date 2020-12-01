@@ -14,7 +14,7 @@ class Deck
         self.cards << Card.new(card, suit)
       end
     end
-    self.cards = self.cards.shuffle!
+    self.cards.shuffle!
   end
 
   private
