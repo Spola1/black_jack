@@ -18,29 +18,29 @@ class Game
   end
 
   def give_bank(player1, player2)
-    player1 = Player.new
-    player2 = Player.new
+    if @player = nil
+      player1.change_balance(self.bank / 2)
+      player2.change_balance(self.bank / 2)
+    elsif @player = player1
+      player1.change_balance(bank)
+    else @player = player2
+      player2.change_balance(bank)
+    end
+    self.bank = 0
   end
 
   def winner(player1, player2)
     points_p1 = player1.hand.points
     points_p2 = player2.hand.points
     if points_p1 == points_p2 || points_p1 > 21 && points_p2 > 21
-      player1.change_balance(self.bank / 2)
-      player2.change_balance(self.bank / 2)
-      player = nil
+      @player = nil
     elsif points_p1 > points_p2 && points_p1 <= 21
-      player1.change_balance(bank)
-      player = player1
-    else
-      player2.change_balance(bank)
-      player = player2
+      @player = player1
+    else points_p2 > points_p1 && points_p2 <= 21
+      @player = player2
     end
-    player
-    self.bank = 0
+    @player
   end
-
-
 
   private
 
