@@ -76,9 +76,9 @@ class Main
   attr_writer :more_cards_player1, :more_cards_player2, :open_cards
 
   def valid(choise)
-    raise 'Не правильный выбор' unless choise =~ SELECTIONS
-    raise 'Не правильный выбор' if choise =~/^[mM]$/ && !more_cards_player1
-    raise 'Не правильный выбор' if choise =~/^[sS]$/ && !skip_turn
+    raise 'Неправильный выбор' unless choise =~ SELECTIONS
+    raise 'Неправильный выбор' if choise =~/^[mM]$/ && !more_cards_player1
+    raise 'Неправильный выбор' if choise =~/^[sS]$/ && !skip_turn
   end
 
   def start_game

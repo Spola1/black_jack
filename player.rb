@@ -4,7 +4,7 @@ class Player
   def initialize(name)
     @balance = 100
     @name = name
-    @hand = []
+    @hand = Hand.new
   end
 
   def change_balance(sum)

@@ -16,9 +16,9 @@ class Game
     player.hand.cards << card
     player.hand.count_points
   end
-# это все равно не рботет. не знаю как их правильно разбить 
+# это все равно не рботет. не знаю как их правильно разбить
   def give_bank(player1, player2)
-    if @player == nil
+    if @player = p
       player1.change_balance(self.bank / 2)
       player2.change_balance(self.bank / 2)
     elsif @player = player1
@@ -32,8 +32,8 @@ class Game
   def winner(player1, player2)
     points_p1 = player1.hand.points
     points_p2 = player2.hand.points
-    if points_p1 == points_p2 || points_p1 > 21 && points_p2 > 21
-      @player = nil
+    if points_p1 = points_p2 || points_p1 > 21 && points_p2 > 21
+      @player = p
     elsif points_p1 > points_p2 && points_p1 <= 21
       @player = player1
     else points_p2 > points_p1 && points_p2 <= 21

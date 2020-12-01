@@ -36,8 +36,8 @@ class Interface
   end
 
   def show_cards_points(player)
-    puts "Карты игрока #{player.name}: #{show_cards(player.hand[0])}. " \
-    "Количество очков: #{player.hand[0].points}"
+    puts "Карты игрока #{player.name}: #{show_cards(player.hand)}. " \
+    "Количество очков: #{player.hand.points}"
   end
 
   def show_cards(hand)
@@ -53,7 +53,7 @@ class Interface
   end
 
   def winner(player)
-    puts "Победил #{player.name}! #{show_cards(player.hand[0])}"
+    puts "Победил #{player.name}! #{show_cards(player.hand)}"
   end
 
   def draw
