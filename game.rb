@@ -11,46 +11,36 @@ class Game
     self.bank += 20
   end
 
-=begin
-ошибка без .hand[0]
-bj/game.rb:16:in `give_card': undefined method `cards' for [#<Hand:0x000055b5f1d70300 @cards=[], @points=0>]:Array (NoMethodError)
-=end
-
   def give_card(player, deck)
     card = deck.cards.pop
-    player.hand[0].cards << card
-    player.hand[0].count_points
+    player.hand.cards << card
+    player.hand.count_points
   end
 
   def give_bank(player1, player2)
-    points_p1 = player1.hand[0].points
-    points_p2 = player2.hand[0].points
+    player1 = Player.new
+    player2 = Player.new
+  end
+
+  def winner(player1, player2)
+    points_p1 = player1.hand.points
+    points_p2 = player2.hand.points
     if points_p1 == points_p2 || points_p1 > 21 && points_p2 > 21
       player1.change_balance(self.bank / 2)
       player2.change_balance(self.bank / 2)
+      player = nil
     elsif points_p1 > points_p2 && points_p1 <= 21
       player1.change_balance(bank)
+      player = player1
     else
       player2.change_balance(bank)
+      player = player2
     end
+    player
     self.bank = 0
   end
 
-=begin
 
-что-то типо такого?
-
-  def winner
-    player = nil
-      if points_p1 > points_p2 && points_p1 <= 21
-    player = player1
-      elsif points_p2 > points_p1 && points_p2 <= 21
-    player = player2
-  end
-  player
-end
-
-=end
 
   private
 
