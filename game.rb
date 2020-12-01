@@ -16,9 +16,9 @@ class Game
     player.hand.cards << card
     player.hand.count_points
   end
-
+# это все равно не рботет. не знаю как их правильно разбить 
   def give_bank(player1, player2)
-    if @player = nil
+    if @player == nil
       player1.change_balance(self.bank / 2)
       player2.change_balance(self.bank / 2)
     elsif @player = player1
