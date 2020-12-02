@@ -146,6 +146,7 @@ class Main
       @interface.draw
     end
     game.winner(player1, player2)
+    game.give_bank(player1, player2)
     @interface.show_balance(player1, player2)
     @interface.show_separator
   end
